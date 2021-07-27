@@ -6,6 +6,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bootstrap-sass', '3.4.1'
+gem 'faker', '2.11.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -28,6 +29,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'bcrypt',                     '3.1.13'
+
+gem 'will_paginate',              '3.3.0'
+gem 'bootstrap-will_paginate',    '1.0.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
