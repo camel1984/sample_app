@@ -82,10 +82,12 @@ class User < ApplicationRecord
   end
   
   def feed
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE  follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+#    following_ids = "SELECT followed_id FROM relationships WHERE  follower_id = :user_id"
+#    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+                     
+                     
+    part_of_feed = "relationships.follower_id = :id or microposts.user_id = :id"
+    Micropost.joins("LEFT OUTER JOIN users on microposts.user_id = users.id LEFT OUTER JOIN relationships ON microposts.user_id = relationships.followed_id").where(part_of_feed, {id: id})
   end
   
     # Follows a user.
